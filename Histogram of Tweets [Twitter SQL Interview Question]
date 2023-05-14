@@ -27,7 +27,7 @@ FROM ( -- find the number of tweets posted by each user in 2022 by grouping the 
          FROM tweets
         WHERE EXTRACT(YEAR FROM tweet_date) >= 2022 -- WHERE tweet_date BETWEEN '2022-01-01' AND '2022-12-31'
         /* In MySQL 
-        WHERE YEAR(CHANGE_DATE) >= 2022 -- this code works
+        WHERE YEAR(tweet_date) >= 2022 -- this code works
         */
      GROUP BY user_id
      ) AS total_tweets
