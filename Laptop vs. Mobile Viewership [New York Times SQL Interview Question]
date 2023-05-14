@@ -17,4 +17,16 @@ user_id	   device_type	   view_time
 129	         phone	      02/09/2022 00:00:00
 145	         tablet	      02/24/2022 00:00:00
 
+Solution 1
+SELECT 
+      COUNT(*) FILTER (WHERE device_type = 'laptop')              AS laptop_views,
+      COUNT(*) FILTER (WHERE device_type IN ('tablet', 'phone'))  AS mobile_views 
+ FROM viewership;
+
+Solution 2
+SELECT 
+      SUM(CASE WHEN device_type = 'laptop' THEN 1 ELSE 0 END)             AS laptop_views, 
+      SUM(CASE WHEN device_type IN ('tablet', 'phone') THEN 1 ELSE 0 END) AS mobile_views 
+  FROM viewership;
+
 
