@@ -22,7 +22,7 @@ Solution
 
 SELECT tweet_count_per_user AS tweet_bucket, 
        COUNT(user_id)       AS users_num
-FROM (
+FROM ( -- find the number of tweets posted by each user in 2022 by grouping the tweet records by user ID and counting the tweets
        SELECT user_id, COUNT(msg) AS tweet_count_per_user
          FROM tweets
         WHERE EXTRACT(YEAR FROM tweet_date) >= 2022 -- WHERE tweet_date BETWEEN '2022-01-01' AND '2022-12-31'
